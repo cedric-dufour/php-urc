@@ -1,0 +1,454 @@
+<refentry id="{@id}">
+
+<refnamediv>
+<refname>PHP Universal Remote Control (PHP-URC)</refname>
+<refpurpose>A library for designing web-based remote control interfaces</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<author>
+Cedric Dufour
+<authorblurb>{@link http://www.ced-network.net/php-urc http://www.ced-network.net/php-urc}</authorblurb>
+</author>
+</refsynopsisdiv>
+
+<graphic fileref="php-urc.png" />
+
+{@toc}
+
+
+<refsect1 id="{@id whatis}">
+<title>What is PHP-URC ?</title>
+<para>The <firstterm>PHP Universal Remote Control (PHP-URC)</firstterm> framework is a library which allows low-skilled PHP developers to easily design web-based remote control interfaces.</para>
+<para>As such, it comes as an ideal development resource for those setting-up a <emphasis>Home Theater PC (HTPC)</emphasis> or a <emphasis>Home Control PC (HCPC)</emphasis>, and willing to control both their PC and external appliances - amplifier, beamer, coffee machine, etc. - from a single interface, accessible with any web-able device.</para>
+<para>From the <emphasis>front-end</emphasis> (user) interface point of view, PHP-URC is entirely Ajax-based and provides a "look-and-feel" close to a genuine remote control.</para>
+<para>From the <emphasis>back-end</emphasis> (services/appliances) interface point of view, PHP-URC relies on "control" plug-ins, which can easily be extended to drive any imagineable backend. The current packaging includes plug-ins for the following backends:</para>
+<itemizedList>
+<listitem><literal>LIRC (Linux Infra-Red Control)</literal> - {@link http://lirc.org http://lirc.org }</listitem>
+<listitem><literal>HEYU (X-10 Automation)</literal> - {@link http://heyu.org http://heyu.org}</listitem>
+<listitem><literal>MPD (Music Player Daemon)</literal> - {@link http://www.musicpd.org http://www.musicpd.org}</listitem>
+<listitem><literal>MPLAYER (Multimedia Player)</literal> - {@link http://www.mplayerhq.hu http://www.mplayerhq.hu}</listitem>
+<listitem><literal>VLC (VideoLAN Media Player)</literal> - {@link http://www.videolan.org http://www.videolan.org}</listitem>
+<listitem><literal>SHELL (Command Line)</literal> - allowing to send arbitrary system commands</listitem>
+<listitem><literal>MACRO (Macro Commands)</literal> - allowing to gather several control/command as one</listitem>
+</itemizedList>
+</refsect1>
+
+
+
+<refsect1 id="{@id specs}">
+<title>Specifications</title>
+
+<refsect2 id="{@id specs_depends}">
+<title>Dependencies</title>
+<itemizedList>
+<listitem>[MUST] <literal>PHP 5.2</literal> or later (it may work on earlier PHP 5 versions; this is untested though)</listitem>
+</itemizedList>
+</refsect2>
+
+<refsect2 id="{@id specs_features}">
+<title>Features</title>
+<itemizedList>
+<listitem>Standard <emphasis>API</emphasis> for interfacing with media players</listitem>
+<listitem><emphasis>Ajax</emphasis>-based user (web) interface</listitem>
+<listitem><emphasis>Ready-to-use "controls"</emphasis> (push buttons, switch buttons, rotary buttons, horizontal and vertical sliders, text display)</listitem>
+<listitem>Visible <emphasis>feedbacks</emphasis> for user actions and backend responses</listitem>
+</itemizedList>
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id licence}">
+<title>Licensing</title>
+<para>PHP-URC is distributed under the <emphasis>GNU General Public Licence (GPL) Version 3</emphasis>. The PHP Universal Remote Control includes all resources which contain the mention <literal>PHP Universal Remote Control (PHP-URC)</literal> in their documentation and licensing preamble.</para>
+<para>Other Open Source resources may come bundled with PHP-URC release packaging; they are (and must be) used according to their original licence (look for copyright-related files in the folder hierarchy).</para>
+</refsect1>
+
+<refsect1 id="{@id download}">
+<title>Downloading</title>
+<para>{@link https://github.com/cedric-dufour/php-urc/downloads download tree...}</para>
+</refsect1>
+
+
+<refsect1 id="{@id build}">
+<title>Build</title>
+<para><emphasis>NOTE:</emphasis> By &quot;build&quot;, we mean create the necessary tarballs/package required for installation (according to the INSTALL section below) or distribution.</para>
+
+<refsect2 id="{@id build_tree}">
+<title>[MUST] Obtain the source code</title>
+<screen>
+<![CDATA[
+$ git clone https://github.com/cedric-dufour/php-urc
+]]>
+</screen>
+<para>[OR]</para>
+<screen>
+<![CDATA[
+$ tar -xjf php-urc-source-@version@.tar.bz2
+$ cd php-ape-@version@
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_source}">
+<title>[MAY] (Re-)build the source tarball</title>
+<screen>
+<![CDATA[
+$ ./debian/rules build-source-tarball
+$ ls -al ../php-urc-source-@version@.tar.bz2
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_install}">
+<title>[MAY] Build the installation (release) tarball</title>
+<screen>
+<![CDATA[
+$ ./debian/rules build-install-tarball
+$ ls -al ../php-urc-@version@.tar.bz2
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_examples}">
+<title>[MAY] Build the examples tarball</title>
+<screen>
+<![CDATA[
+$ ./debian/rules build-examples-tarball
+$ ls -al ../php-urc-examples-@version@.tar.bz2
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_doc}">
+<title>[MAY] Build the documentation tarball</title>
+<screen>
+<![CDATA[
+$ ./debian/rules build-doc-tarball
+$ ls -al ../php-urc-doc-@version@.tar.bz2
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_debian}">
+<title>[MAY] Build the debian packages</title>
+<screen>
+<![CDATA[
+$ debuild -us -uc -b
+$ ls -al ../php-urc*_@version@_all.deb
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_debian_source}">
+<title>[MAY] Build the debian source package</title>
+<screen>
+<![CDATA[
+$ debuild -I'.git*' -us -uc -S
+$ ls -al ../php-urc_@version@.dsc ../php-urc_@version@.tar.gz
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_all}">
+<title>[SHOULD] Do it all with a single command</title>
+<screen>
+<![CDATA[
+$ ./debian/rules release
+]]>
+</screen>
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id install}">
+<title>Installation</title>
+<para><emphasis>WARNING: PHP-APE is actively maintained on Linux. It has not been tested on Windows.</emphasis></para>
+<para><emphasis>NOTE:</emphasis> We assume a Linux (Debian) environment and a working Apache/PHP setup.</para>
+
+<refsect2 id="{@id install_php}">
+<title>[MUST] Install PHP-URC</title>
+
+<refsect3 id="{@id install_php_release}">
+<title>[OR] using the release tarball</title>
+<screen>
+<![CDATA[
+$ INSTALL_DIR='<installation-directory>'
+$ cd "${INSTALL_DIR}"
+$ tar -xjf php-urc-@version@.tar.bz2
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id install_php_debian}">
+<title>[OR] using the debian package</title>
+<screen>
+<![CDATA[
+$ dpkg -i php-urc_@version@_all.deb
+]]>
+</screen>
+</refsect3>
+
+</refsect2>
+
+</refsect1>
+
+<refsect1 id="{@id install_contd}">
+<title>(cont'd)</title> <!-- an horrible hack to circumvent a bug in PhpDocumentor docbook parsing -->
+
+<refsect2 id="{@id install_examples}">
+<title>[MAY] Install PHP-URC Examples</title>
+
+<refsect3 id="{@id install_examples_release}">
+<title>[OR] using the examples tarball</title>
+<screen>
+<![CDATA[
+$ EXAMPLES_DIR='<examples-directory>'
+$ cd "${EXAMPLES_DIR}"
+$ tar -xjf php-urc-examples-@version@.tar.bz2
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id install_examples_debian}">
+<title>[OR] using the debian package</title>
+<screen>
+<![CDATA[
+$ dpkg -i php-urc-examples_@version@_all.deb
+]]>
+</screen>
+</refsect3>
+
+</refsect2>
+
+</refsect1>
+
+<refsect1 id="{@id install_contd2}">
+<title>(cont'd)</title> <!-- an horrible hack to circumvent a bug in PhpDocumentor docbook parsing -->
+
+<refsect2 id="{@id install_doc}">
+<title>[MAY] Install PHP-URC Documentation</title>
+
+<refsect3 id="{@id install_doc_release}">
+<title>[OR] using the documentation tarball</title>
+<screen>
+<![CDATA[
+$ DOC_DIR='<documentation-directory>'
+$ cd "${DOC_DIR}"
+$ tar -xjf php-urc-doc-@version@.tar.bz2
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id install_doc_debian}">
+<title>[OR] using the debian package</title>
+<screen>
+<![CDATA[
+$ dpkg -i php-urc-doc_@version@_all.deb
+]]>
+</screen>
+</refsect3>
+
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id configure}">
+<title>Configuration</title>
+<para><emphasis>NOTE:</emphasis> We assume a Linux (Debian) environment and a working Apache/PHP setup.</para>
+
+<refsect2 id="{@id configure_php_urc}">
+<para>Designing a new interface based of PHP-URC is achieved in three steps:</para>
+<itemizedList>
+<listitem>Configure the backends and define controls (<literal>/opt/my-urc/urc.config.php</literal>)</listitem>
+<listitem>Create the Ajax/RPC handler (<literal>/opt/my-urc/urc.rpc.php</literal>)</listitem>
+<listitem>Include the controls in your web page (<literal>/opt/my-urc/index.php</literal>)</listitem>
+<para><emphasis>NOTE:</emphasis> Have a look at the provided examples tarball/package, which contains a sample <literal>urc.config.php</literal>, <literal>urc.rpc.php</literal> and <literal>index.php</literal> file for each of the supported backends.</para>
+</itemizedList>
+
+<refsect3 id="{@id configure_php_urc_config}">
+<title>Configure the backends and define controls</title>
+<para><literal>urc.config.php</literal>:</para>
+<screen>
+<![CDATA[
+<?php
+// Retrieve and configure URC framework
+$oURC = URC::useInstance();
+
+// Add controls
+// $oURC->addControl( $oURC->newControl( $sPluginId, $sId, $sName, $mParameter, $sType, $sSize ) );
+$oURC->addControl( $oURC->newControl( 'DUMMY', 'dummy-control', 'My dummy control', array( 'type' => 'random' ), URC_CONTROL::TYPE_TEXT ) );
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id configure_php_urc_rpc}">
+<title>Create the Ajax/RPC handler</title>
+<para><literal>urc.rpc.php</literal>:</para>
+<screen>
+<![CDATA[
+<?php
+// Load URC framework and configuration
+require_once( 'urc.php' );
+require_once( 'urc.config.php' );
+
+// Handle the Remote Procedure Call (RPC)
+URC_RPC::process();
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id configure_php_urc_ui}">
+<title>Include the controls in your web page</title>
+<para><literal>index.php</literal>:</para>
+<screen>
+<![CDATA[
+<?php
+// Load URC framework and configuration
+require_once( 'urc.php' );
+require_once( 'urc.config.php' );
+$oURC = URC::useInstance();
+
+// HTML code
+?>
+<HTML>
+<HEAD>
+<?php echo $oURC->htmlHeadContent(); ?>
+</HEAD>
+<BODY ONLOAD="URC_init();" ONMOUSEUP="URC_onMU();">
+<DIV CLASS="viewport">
+<?php
+echo $oURC->htmlBodyContent();
+echo $oURC->htmlFrameworkBegin();
+// $oURC->htmlControl( $sId, $sSize );
+echo $oURC->htmlControl( 'dummy-control', URC_THEME::SIZE_MEDIUM );
+echo $oURC->htmlFrameworkEnd();
+?>
+</DIV>
+</BODY>
+</HTML>
+]]>
+</screen>
+</refsect3>
+
+</refsect2>
+
+</refsect1>
+
+<refsect1 id="{@id configure_contd}">
+<title>(cont'd)</title> <!-- an horrible hack to circumvent a bug in PhpDocumentor docbook parsing -->
+
+<refsect2 id="{@id configure_apache}">
+<title>Apache configuration</title>
+<para><literal>/usr/share/doc/php-urc/examples/apache.conf</literal>:</para>
+<screen>
+<![CDATA[
+## PHP-URC aliases
+Alias /php-urc/js "/usr/share/php-urc/js"
+Alias /php-urc/themes "/usr/share/php-urc/php/htdocs/themes"
+<DirectoryMatch "/usr/share/php-urc/(js|php/htdocs/themes)">
+  ## Access Control
+  #  Restrict access to local network
+  Order allow,deny
+  Allow from 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+</DirectoryMatch>
+
+## Your web pages
+Alias /my-urc/ "/opt/my-urc"
+<Directory "/opt/my-urc">
+  # NOTE: these could also be set in a '.htaccess' file
+  
+  ## Access Control
+  #  Restrict access to local network
+  Order allow,deny
+  Allow from 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+  #  Disable access to configuration files
+  <Files urc.config.php>
+    Satisfy all
+    Order allow,deny
+    Deny from all
+  </Files>
+
+  ## Logging
+  #  Disable logging of RPC requests (prevent logs clogging with URC poll requests)
+  #  NOTE: User along with the following settings in your server or virtual host configuration
+  #        > CustomLog <log-file> <log-format> env=!no-logging'
+  #        > CustomLog /dev/null "no-logging" env=no-logging'
+  <IfModule mod_setenvif.c>
+    SetEnvIf Request_URI "urc\.rpc\.php$" no-logging
+  </IfModule>
+
+  ## PHP settings
+  php_flag register_globals 0
+  php_value include_path "/usr/share/php-urc/php/include"
+  php_value display_errors Off
+
+  ## PHP-URC environment
+  setenv PHP_URC_INCLUDE_PATH "/usr/share/php-urc/php/include"
+  setenv PHP_URC_HTDOCS_URL "/php-urc"
+</Directory>
+]]>
+</screen>
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id documentation}">
+<title>Further documentation</title>
+<para>The full documentation of PHP-URC API (including source code) is part of this (phpDocumentor-generated) HTML documentation; make sure to browse through the expandable tree located on the left of this text, as well as switch the documentation context using the drop list located on top of this text.</para>
+</refsect1>
+
+
+<refsect1 id="{@id tipsntricks}">
+<title>Tips 'n Tricks</title>
+<para><emphasis>NOTE:</emphasis> Please refer to PHP-URC API documentation for the details of the functions mentioned below.</para>
+
+<refsect2 id="{@id tipsntricks_pathsurls}">
+<title>Paths and URLs</title>
+<para>By default, PHP-URC expects to find resources according to the <literal>PHP_URC_INCLUDE_PATH</literal> and <literal>PHP_URC_HTDOCS_URL</literal> environment variables (defined in the Apache configuration). If you need to dynamically modify those root paths/URLs for some (yet unforeseen) reason, you can do it via the <emphasis>setPaths</emphasis> and the <emphasis>setUrls</emphasis> functions:</para>
+<screen>
+<![CDATA[
+<?php
+// Retrieve and configure URC framework
+$oURC = URC::useInstance();
+//$oURC->setPaths( $sPathPlugins, $sPathThemes );
+//$oURC->setUrls( $sUrlPhp, $sUrlJavascript, $sUrlThemesRoot );
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id tipsntricks_polltimeout}">
+<title>Poll and Timeout Parameters</title>
+<para>By default, PHP-URC will have the user interface regularly updated (more specifically controls which were passed to <literal>addPollControlIDs</literal>) every <emphasis>1 second</emphasis>, and timeout in case no answer is received within <emphasis>2 seconds</emphasis>. Some backends may exhibit important latency and require the poll rate and RPC timeout to be adjusted. You can do so with the <emphasis>setUIParameters</emphasis> function:</para>
+<screen>
+<![CDATA[
+<?php
+// Retrieve and configure URC framework
+$oURC = URC::useInstance();
+//$oURC->setUIParameters( $iPollRate, $iRpcTimeout, $bFrameworkBoundary );
+]]>
+</screen>
+<para><emphasis>NOTE:</emphasis> On Firefox, you can easily find out about the backends latency by using the web-developer console and watching the HTTP response time corresponding to the poll requests and other user actions.</para>
+</refsect2>
+
+<refsect2 id="{@id tipsntricks_repeat}">
+<title>Repeatable Controls</title>
+<para>By default, push buttons are not configured to be repeatable. On the other hand, horizontal/vertical bars and sliders are set to repeat <emphasis>every 35 milliseconds</emphasis>, after a <emphasis>350 milliseconds delay</emphasis>, and trigger a <emphasis>0.01 value change (1%)</emphasis>. In order to have slower/faster control, you can use the <emphasis>setRepeat</emphasis> function:</para>
+<screen>
+<![CDATA[
+<?php
+// Retrieve and configure URC framework
+$oURC = URC::useInstance();
+// $oURC->useControl( $sId )->setRepeat( true, $fRepeatValue, $iRepeatRate, $iRepeatDelay );
+]]>
+</screen>
+</refsect2>
+
+</refsect1>
+
+
+</refentry> 

@@ -1,0 +1,244 @@
+/* INDENTING (emacs/vi): -*- mode:css; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: */
+
+/** PHP Universal Remote Control (PHP-URC)
+ *
+ * <P><B>COPYRIGHT:</B></P>
+ * <PRE>
+ * PHP Universal Remote Control (PHP-URC)
+ * Copyright (C) 2008 Cedric Dufour
+ * GNU General Public Licence (GPL), Version 3
+ *
+ * The PHP Universal Remote Control (PHP-URC) is free software:
+ * you can redistribute it and/or modify it under the terms of the GNU General
+ * Public License as published by the Free Software Foundation, Version 3.
+ *
+ * The PHP Universal Remote Control (PHP-URC) is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+ * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License (LICENSE.TXT) for more details.
+ * </PRE>
+ *
+ * @package PHP_URC_Themes
+ * @author Cedric Dufour <http://www.ced-network.net/php-urc>
+ * @version @version@
+ */
+
+
+/*
+ * GLOBAL
+ ********************************************************************************/
+
+/* URC zone */
+DIV.URC {MARGIN:auto;PADDING:0px;}
+DIV.URC DIV {MARGIN:auto;PADDING:0px;}
+DIV.URC TABLE {MARGIN:0px;PADDING:0px;}
+DIV.URC TD {MARGIN:0px;PADDING:0px;FONT:10px sans-serif;COLOR:#565656;}
+DIV.URC H1 {FONT-SIZE:16px;}
+DIV.URC H2 {FONT-SIZE:14px;}
+DIV.URC H3 {FONT-SIZE:12px;}
+DIV.URC H4 {FONT-SIZE:10px;}
+DIV.URC H5 {FONT-SIZE:10px;}
+DIV.URC P {FONT-SIZE:10px;}
+DIV.URC LI {FONT-SIZE:10px;}
+
+/* URC frame */
+DIV.URC TABLE.frm {WIDTH:100%;}
+DIV.URC TABLE.frm TD.tl {WIDTH:5px;HEIGHT:5px;FONT-SIZE:1px;}
+DIV.URC TABLE.frm TD.tc {HEIGHT:5px;FONT-SIZE:1px;}
+DIV.URC TABLE.frm TD.tr {WIDTH:5px;HEIGHT:5px;FONT-SIZE:1px;}
+DIV.URC TABLE.frm TD.ml {HEIGHT:5px;FONT-SIZE:1px;}
+DIV.URC TABLE.frm TD.mr {WIDTH:5px;FONT-SIZE:1px;}
+DIV.URC TABLE.frm TD.bl {WIDTH:5px;HEIGHT:5px;FONT-SIZE:1px;}
+DIV.URC TABLE.frm TD.bc {HEIGHT:5px;FONT-SIZE:1px;}
+DIV.URC TABLE.frm TD.br {WIDTH:5px;HEIGHT:5px;FONT-SIZE:1px;}
+
+/* URC defaults */
+DIV.URC TABLE.align {WIDTH:0px;}
+DIV.URC TABLE.align TD {VERTICAL-ALIGN:top !important;TEXT-ALIGN:left !important;}
+DIV.URC DIV.ovl TABLE {WIDTH:100% !important;HEIGHT:100% !important;}
+DIV.URC DIV.ovl TD {VERTICAL-ALIGN:middle !important;TEXT-ALIGN:center !important;OVERFLOW:hidden !important;CURSOR:pointer !important;}
+
+
+/*
+ * CONTROLS
+ ********************************************************************************/
+
+/* Push Button - Xtra Small */
+DIV.URC-pb-xs {WIDTH:30px;HEIGHT:30px;}
+DIV.URC-pb-xs DIV {WIDTH:30px;HEIGHT:30px;}
+DIV.URC-pb-xs DIV.bcg {BACKGROUND:url("img/b-xs.bcg.png");}
+DIV.URC-pb-xs DIV.ovl {}
+DIV.URC-pb-xs DIV.ovl TD {FONT-SIZE:6px;COLOR:#191919;OVERFLOW:hidden;CURSOR:pointer;}
+
+/* Push Button - Small */
+DIV.URC-pb-s {WIDTH:40px;HEIGHT:40px;}
+DIV.URC-pb-s DIV {WIDTH:40px;HEIGHT:40px;}
+DIV.URC-pb-s DIV.bcg {BACKGROUND:url("img/b-s.bcg.png");}
+DIV.URC-pb-s DIV.ovl {}
+DIV.URC-pb-s DIV.ovl TD {FONT-SIZE:12px;COLOR:#191919;OVERFLOW:hidden;CURSOR:pointer;}
+
+/* Push Button - Medium */
+DIV.URC-pb-m {WIDTH:50px;HEIGHT:50px;}
+DIV.URC-pb-m DIV {WIDTH:50px;HEIGHT:50px;}
+DIV.URC-pb-m DIV.bcg {BACKGROUND:url("img/b-m.bcg.png");}
+DIV.URC-pb-m DIV.ovl {}
+DIV.URC-pb-m DIV.ovl TD {FONT-SIZE:18px;COLOR:#191919;OVERFLOW:hidden;CURSOR:pointer;}
+
+/* Switch Button - Xtra Small */
+DIV.URC-sb-xs {WIDTH:30px;HEIGHT:30px;}
+DIV.URC-sb-xs DIV {WIDTH:30px;HEIGHT:30px;}
+DIV.URC-sb-xs DIV.bcg {BACKGROUND:url("img/b-xs.bcg.png");}
+DIV.URC-sb-xs DIV.off {BACKGROUND:url("img/b-xs.off.png");CURSOR:pointer;}
+DIV.URC-sb-xs DIV.on {BACKGROUND:url("img/b-xs.on.png");DISPLAY:none;CURSOR:pointer;}
+
+/* Switch Button - Small */
+DIV.URC-sb-s {WIDTH:40px;HEIGHT:40px;}
+DIV.URC-sb-s DIV {WIDTH:40px;HEIGHT:40px;}
+DIV.URC-sb-s DIV.bcg {BACKGROUND:url("img/b-s.bcg.png");}
+DIV.URC-sb-s DIV.off {BACKGROUND:url("img/b-s.off.png");CURSOR:pointer;}
+DIV.URC-sb-s DIV.on {BACKGROUND:url("img/b-s.on.png");DISPLAY:none;CURSOR:pointer;}
+
+/* Switch Button - Medium */
+DIV.URC-sb-m {WIDTH:50px;HEIGHT:50px;}
+DIV.URC-sb-m DIV {WIDTH:50px;HEIGHT:50px;}
+DIV.URC-sb-m DIV.bcg {BACKGROUND:url("img/b-m.bcg.png");}
+DIV.URC-sb-m DIV.off {BACKGROUND:url("img/b-m.off.png");CURSOR:pointer;}
+DIV.URC-sb-m DIV.on {BACKGROUND:url("img/b-m.on.png");DISPLAY:none;CURSOR:pointer;}
+
+/* Rotary Button - Xtra Small */
+DIV.URC-rb-xs {WIDTH:30px;HEIGHT:30px;}
+DIV.URC-rb-xs DIV {WIDTH:30px;HEIGHT:30px;}
+DIV.URC-rb-xs DIV.bcg {BACKGROUND:url("img/b-xs.bcg.png");}
+DIV.URC-rb-xs DIV.scl {BACKGROUND:url("img/b-xs.scl.png");}
+DIV.URC-rb-xs DIV.pre-ctl {WIDTH:11px;CURSOR:pointer;}
+DIV.URC-rb-xs DIV.ctl {WIDTH:4px;HEIGHT:4px;MARGIN-LEFT:1px;MARGIN-TOP:15px;MARGIN-RIGHT:3px;BACKGROUND:url("img/b.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-rb-xs DIV.post-ctl {WIDTH:11px;CURSOR:pointer;}
+
+/* Rotary Button - Small */
+DIV.URC-rb-s {WIDTH:40px;HEIGHT:40px;}
+DIV.URC-rb-s DIV {WIDTH:40px;HEIGHT:40px;}
+DIV.URC-rb-s DIV.bcg {BACKGROUND:url("img/b-s.bcg.png");}
+DIV.URC-rb-s DIV.scl {BACKGROUND:url("img/b-s.scl.png");}
+DIV.URC-rb-s DIV.pre-ctl {WIDTH:11px;CURSOR:pointer;}
+DIV.URC-rb-s DIV.ctl {WIDTH:4px;HEIGHT:4px;MARGIN-LEFT:4px;MARGIN-TOP:24px;MARGIN-RIGHT:10px;BACKGROUND:url("img/b.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-rb-s DIV.post-ctl {WIDTH:11px;CURSOR:pointer;}
+
+/* Rotary Button - Medium */
+DIV.URC-rb-m {WIDTH:50px;HEIGHT:50px;}
+DIV.URC-rb-m DIV {WIDTH:50px;HEIGHT:50px;}
+DIV.URC-rb-m DIV.bcg {BACKGROUND:url("img/b-m.bcg.png");}
+DIV.URC-rb-m DIV.scl {BACKGROUND:url("img/b-m.scl.png");}
+DIV.URC-rb-m DIV.pre-ctl {WIDTH:11px;CURSOR:pointer;}
+DIV.URC-rb-m DIV.ctl {WIDTH:4px;HEIGHT:4px;MARGIN-LEFT:6px;MARGIN-TOP:33px;MARGIN-RIGHT:18px;BACKGROUND:url("img/b.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-rb-m DIV.post-ctl {WIDTH:11px;CURSOR:pointer;}
+
+/* Horizontal Slider - Xtra Small */
+DIV.URC-hs-xs {WIDTH:60px;HEIGHT:30px;}
+DIV.URC-hs-xs DIV {WIDTH:60px;HEIGHT:30px;}
+DIV.URC-hs-xs DIV.bcg {BACKGROUND:url("img/hs-xs.bcg.png");}
+DIV.URC-hs-xs DIV.scl {BACKGROUND:url("img/hs-xs.scl.png");}
+DIV.URC-hs-xs DIV.pre-ctl {WIDTH:4px;CURSOR:pointer;}
+DIV.URC-hs-xs DIV.ctl {WIDTH:12px;BACKGROUND:url("img/hs-s.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-hs-xs DIV.post-ctl {WIDTH:38px;CURSOR:pointer;}
+
+/* Horizontal Slider - Small */
+DIV.URC-hs-s {WIDTH:70px;HEIGHT:30px;}
+DIV.URC-hs-s DIV {WIDTH:70px;HEIGHT:30px;}
+DIV.URC-hs-s DIV.bcg {BACKGROUND:url("img/hs-s.bcg.png");}
+DIV.URC-hs-s DIV.scl {BACKGROUND:url("img/hs-s.scl.png");}
+DIV.URC-hs-s DIV.pre-ctl {WIDTH:4px;CURSOR:pointer;}
+DIV.URC-hs-s DIV.ctl {WIDTH:12px;BACKGROUND:url("img/hs-s.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-hs-s DIV.post-ctl {WIDTH:48px;CURSOR:pointer;}
+
+/* Horizontal Slider - Medium */
+DIV.URC-hs-m {WIDTH:120px;HEIGHT:30px;}
+DIV.URC-hs-m DIV {WIDTH:120px;HEIGHT:30px;}
+DIV.URC-hs-m DIV.bcg {BACKGROUND:url("img/hs-m.bcg.png");}
+DIV.URC-hs-m DIV.scl {BACKGROUND:url("img/hs-m.scl.png");}
+DIV.URC-hs-m DIV.pre-ctl {WIDTH:4px;CURSOR:pointer;}
+DIV.URC-hs-m DIV.ctl {WIDTH:12px;BACKGROUND:url("img/hs-s.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-hs-m DIV.post-ctl {WIDTH:98px;CURSOR:pointer;}
+
+/* Horizontal Bar - Xtra Small */
+DIV.URC-hb-xs {WIDTH:60px;HEIGHT:20px;}
+DIV.URC-hb-xs DIV {WIDTH:60px;HEIGHT:20px;}
+DIV.URC-hb-xs DIV.bcg {BACKGROUND:url("img/hb-xs.bcg.png");}
+DIV.URC-hb-xs DIV.pre-hgl {WIDTH:10px;CURSOR:pointer;}
+DIV.URC-hb-xs DIV.hgl {WIDTH:0px;BACKGROUND:url("img/hb.hgl.png");CURSOR:pointer;}
+DIV.URC-hb-xs DIV.post-hgl {WIDTH:50px;CURSOR:pointer;}
+
+/* Horizontal Bar - Small */
+DIV.URC-hb-s {WIDTH:70px;HEIGHT:20px;}
+DIV.URC-hb-s DIV {WIDTH:70px;HEIGHT:20px;}
+DIV.URC-hb-s DIV.bcg {BACKGROUND:url("img/hb-s.bcg.png");}
+DIV.URC-hb-s DIV.pre-hgl {WIDTH:10px;CURSOR:pointer;}
+DIV.URC-hb-s DIV.hgl {WIDTH:0px;BACKGROUND:url("img/hb.hgl.png");CURSOR:pointer;}
+DIV.URC-hb-s DIV.post-hgl {WIDTH:50px;CURSOR:pointer;}
+
+/* Horizontal Bar - Medium */
+DIV.URC-hb-m {WIDTH:120px;HEIGHT:20px;}
+DIV.URC-hb-m DIV {WIDTH:120px;HEIGHT:20px;}
+DIV.URC-hb-m DIV.bcg {BACKGROUND:url("img/hb-m.bcg.png");}
+DIV.URC-hb-m DIV.pre-hgl {WIDTH:10px;CURSOR:pointer;}
+DIV.URC-hb-m DIV.hgl {WIDTH:0px;BACKGROUND:url("img/hb.hgl.png");CURSOR:pointer;}
+DIV.URC-hb-m DIV.post-hgl {WIDTH:100px;CURSOR:pointer;}
+
+/* Vertical Slider - Xtra Small */
+DIV.URC-vs-xs {WIDTH:30px;HEIGHT:60px;}
+DIV.URC-vs-xs DIV {WIDTH:30px;HEIGHT:60px;}
+DIV.URC-vs-xs DIV.bcg {BACKGROUND:url("img/vs-xs.bcg.png");}
+DIV.URC-vs-xs DIV.scl {BACKGROUND:url("img/vs-xs.scl.png");}
+DIV.URC-vs-xs DIV.post-ctl {HEIGHT:44px;CURSOR:pointer;}
+DIV.URC-vs-xs DIV.ctl {WIDTH:30px;HEIGHT:12px;BACKGROUND:url("img/vs-s.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-vs-xs DIV.pre-ctl {HEIGHT:4px;CURSOR:pointer;}
+
+/* Vertical Slider - Small */
+DIV.URC-vs-s {WIDTH:30px;HEIGHT:70px;}
+DIV.URC-vs-s DIV {WIDTH:30px;HEIGHT:70px;}
+DIV.URC-vs-s DIV.bcg {BACKGROUND:url("img/vs-s.bcg.png");}
+DIV.URC-vs-s DIV.scl {BACKGROUND:url("img/vs-s.scl.png");}
+DIV.URC-vs-s DIV.post-ctl {HEIGHT:54px;CURSOR:pointer;}
+DIV.URC-vs-s DIV.ctl {WIDTH:30px;HEIGHT:12px;BACKGROUND:url("img/vs-s.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-vs-s DIV.pre-ctl {HEIGHT:4px;CURSOR:pointer;}
+
+/* Vertical Slider - Medium */
+DIV.URC-vs-m {WIDTH:30px;HEIGHT:120px;}
+DIV.URC-vs-m DIV {WIDTH:30px;HEIGHT:120px;}
+DIV.URC-vs-m DIV.bcg {BACKGROUND:url("img/vs-m.bcg.png");}
+DIV.URC-vs-m DIV.scl {BACKGROUND:url("img/vs-m.scl.png");}
+DIV.URC-vs-m DIV.post-ctl {HEIGHT:104px;CURSOR:pointer;}
+DIV.URC-vs-m DIV.ctl {WIDTH:30px;HEIGHT:12px;BACKGROUND:url("img/vs-s.ctl-bcg.png");CURSOR:pointer;}
+DIV.URC-vs-m DIV.pre-ctl {HEIGHT:4px;CURSOR:pointer;}
+
+/* Vertical Bar - Xtra Small */
+DIV.URC-vb-xs {WIDTH:20px;HEIGHT:60px;}
+DIV.URC-vb-xs DIV {WIDTH:20px;HEIGHT:60px;}
+DIV.URC-vb-xs DIV.bcg {BACKGROUND:url("img/vb-xs.bcg.png");}
+DIV.URC-vb-xs DIV.post-hgl {HEIGHT:50px;CURSOR:pointer;}
+DIV.URC-vb-xs DIV.hgl {HEIGHT:0px;BACKGROUND:url("img/vb.hgl.png");CURSOR:pointer;}
+DIV.URC-vb-xs DIV.pre-hgl {HEIGHT:10px;CURSOR:pointer;}
+
+/* Vertical Bar - Small */
+DIV.URC-vb-s {WIDTH:20px;HEIGHT:70px;}
+DIV.URC-vb-s DIV {WIDTH:20px;HEIGHT:70px;}
+DIV.URC-vb-s DIV.bcg {BACKGROUND:url("img/vb-s.bcg.png");}
+DIV.URC-vb-s DIV.post-hgl {HEIGHT:60px;CURSOR:pointer;}
+DIV.URC-vb-s DIV.hgl {HEIGHT:0px;BACKGROUND:url("img/vb.hgl.png");CURSOR:pointer;}
+DIV.URC-vb-s DIV.pre-hgl {HEIGHT:10px;CURSOR:pointer;}
+
+/* Vertical Bar - Medium */
+DIV.URC-vb-m {WIDTH:20px;HEIGHT:120px;}
+DIV.URC-vb-m DIV {WIDTH:20px;HEIGHT:120px;}
+DIV.URC-vb-m DIV.bcg {BACKGROUND:url("img/vb-m.bcg.png");}
+DIV.URC-vb-m DIV.post-hgl {HEIGHT:110px;CURSOR:pointer;}
+DIV.URC-vb-m DIV.hgl {HEIGHT:0px;BACKGROUND:url("img/vb.hgl.png");CURSOR:pointer;}
+DIV.URC-vb-m DIV.pre-hgl {HEIGHT:10px;CURSOR:pointer;}
+
+/* Text - Xtra Small */
+SPAN.URC-tx-xs {FONT-SIZE:8px;COLOR:#6688FF;}
+
+/* Text - Small */
+SPAN.URC-tx-s {FONT-SIZE:10px;COLOR:#6688FF;}
+
+/* Text - Medium */
+SPAN.URC-tx-m {FONT-SIZE:14px;COLOR:#6688FF;}

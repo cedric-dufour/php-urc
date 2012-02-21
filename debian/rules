@@ -1,0 +1,120 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+DEB_NOEPOCH_VERSION := $(shell echo $(DEB_VERSION) | cut -d: -f2-)
+DEB_UPSTREAM_VERSION := $(shell echo $(DEB_NOEPOCH_VERSION) | sed 's/-[^-]*$$//')
+
+DEB_PACKAGE_SOURCE = php-urc-source
+DEB_PACKAGE = php-urc
+DEB_PACKAGE_EX = php-urc-examples
+DEB_PACKAGE_DOC = php-urc-doc
+
+.PHONY: build clean install binary-indep binary-arch binary
+
+build: build-stamp
+
+build-stamp:
+	dh_testdir
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	dh_clean build-stamp
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+
+	# Create the Debian packages
+
+	# ... DEB_PACKAGE
+	mkdir -p debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE)/php
+	cp -r php/include debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE)/php/.
+	mkdir -p debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE)/php/htdocs
+	cp -r php/htdocs/themes debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE)/php/htdocs/.
+	cp -r js debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE)/.
+	./util/fixperm -s debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE)
+	mkdir -p debian/$(DEB_PACKAGE)/usr/share/doc/$(DEB_PACKAGE)
+	cp *.TXT debian/$(DEB_PACKAGE)/usr/share/doc/$(DEB_PACKAGE)/.
+	find debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE) debian/$(DEB_PACKAGE)/usr/share/doc/$(DEB_PACKAGE) -type f -exec fgrep -q '@version@' {} \; -exec sed -i "s/@version@/$(DEB_UPSTREAM_VERSION)/g" {} \;
+	
+	# ... DEB_PACKAGE_EX
+	mkdir -p debian/$(DEB_PACKAGE_EX)/usr/share/doc/$(DEB_PACKAGE)/examples/php/htdocs
+	cp -r php/htdocs/examples/* debian/$(DEB_PACKAGE_EX)/usr/share/doc/$(DEB_PACKAGE)/examples/php/htdocs/.
+	cp etc/apache.conf-sample debian/$(DEB_PACKAGE_EX)/usr/share/doc/$(DEB_PACKAGE)/examples/apache.conf
+	./util/fixperm -s debian/$(DEB_PACKAGE_EX)/usr/share/doc/$(DEB_PACKAGE)
+
+	# ... DEB_PACKAGE_DOC
+	mkdir -p debian/$(DEB_PACKAGE_DOC)/usr/share/doc/$(DEB_PACKAGE)/html
+	./util/makedoc PHP_URC "PHP Universal Remote Control" debian/$(DEB_PACKAGE_DOC)/usr/share/doc/$(DEB_PACKAGE)/html php doc/phpdoc
+	find debian/$(DEB_PACKAGE_DOC)/usr/share/doc/$(DEB_PACKAGE)/html -type f -exec fgrep -q '@version@' {} \; -exec sed -i "s/@version@/$(DEB_UPSTREAM_VERSION)/g" {} \;
+	./util/fixperm -d debian/$(DEB_PACKAGE_DOC)/usr/share/doc/$(DEB_PACKAGE)/html
+
+# Build architecture-dependent files here.
+binary-arch: build install
+# We have nothing to do by default.
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_installexamples
+	dh_installchangelogs 
+	dh_compress --exclude=classTree.js
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+
+build-source-tarball:
+	dh_testdir
+	dh_clean build-stamp
+	# Create the source tarball
+	mkdir -p /tmp/$(DEB_PACKAGE_SOURCE)-$(DEB_UPSTREAM_VERSION)
+	cp -r * /tmp/$(DEB_PACKAGE_SOURCE)-$(DEB_UPSTREAM_VERSION)/.
+	tar -C /tmp -cjf ../$(DEB_PACKAGE_SOURCE)-$(DEB_UPSTREAM_VERSION).tar.bz2 $(DEB_PACKAGE_SOURCE)-$(DEB_UPSTREAM_VERSION)
+	rm -rf /tmp/$(DEB_PACKAGE_SOURCE)-$(DEB_UPSTREAM_VERSION)
+
+build-install-tarball:
+	# WARNING: make install before-hand!
+	# Create the installation tarball
+	mkdir -p /tmp/$(DEB_PACKAGE)-$(DEB_UPSTREAM_VERSION)
+	cp -rp debian/$(DEB_PACKAGE)/usr/share/$(DEB_PACKAGE)/* /tmp/$(DEB_PACKAGE)-$(DEB_UPSTREAM_VERSION)/.
+	cp -p debian/$(DEB_PACKAGE)/usr/share/doc/$(DEB_PACKAGE)/*.TXT* /tmp/$(DEB_PACKAGE)-$(DEB_UPSTREAM_VERSION)/.
+	tar -C /tmp -cjf ../$(DEB_PACKAGE)-$(DEB_UPSTREAM_VERSION).tar.bz2 $(DEB_PACKAGE)-$(DEB_UPSTREAM_VERSION)
+	rm -rf /tmp/$(DEB_PACKAGE)-$(DEB_UPSTREAM_VERSION)
+
+build-examples-tarball:
+	# WARNING: make install before-hand!
+	# Create the examples tarball
+	mkdir -p /tmp/$(DEB_PACKAGE_EX)-$(DEB_UPSTREAM_VERSION)
+	cp -rp debian/$(DEB_PACKAGE_EX)/usr/share/doc/$(DEB_PACKAGE)/* /tmp/$(DEB_PACKAGE_EX)-$(DEB_UPSTREAM_VERSION)/.
+	tar -C /tmp -cjf ../$(DEB_PACKAGE_EX)-$(DEB_UPSTREAM_VERSION).tar.bz2 $(DEB_PACKAGE_EX)-$(DEB_UPSTREAM_VERSION)
+	rm -rf /tmp/$(DEB_PACKAGE_EX)-$(DEB_UPSTREAM_VERSION)
+
+build-doc-tarball:
+	# WARNING: make install before-hand!
+	# Create the documentation tarball
+	mkdir -p /tmp/$(DEB_PACKAGE_DOC)-$(DEB_UPSTREAM_VERSION)
+	cp -rp debian/$(DEB_PACKAGE_DOC)/usr/share/doc/$(DEB_PACKAGE)/* /tmp/$(DEB_PACKAGE_DOC)-$(DEB_UPSTREAM_VERSION)/.
+	tar -C /tmp -cjf ../$(DEB_PACKAGE_DOC)-$(DEB_UPSTREAM_VERSION).tar.bz2 $(DEB_PACKAGE_DOC)-$(DEB_UPSTREAM_VERSION)
+	rm -rf /tmp/$(DEB_PACKAGE_DOC)-$(DEB_UPSTREAM_VERSION)
+
+debian-packages:
+	debuild -us -uc -b
+
+debian-source:
+	debuild -I'.git*' -us -uc -S
+
+release: debian-packages build-install-tarball build-examples-tarball build-doc-tarball debian-source build-source-tarball
+

@@ -1,0 +1,45 @@
+## PHP-URC aliases
+Alias /php-urc/js "/usr/share/php-urc/js"
+Alias /php-urc/themes "/usr/share/php-urc/php/htdocs/themes"
+<DirectoryMatch "/usr/share/php-urc/(js|php/htdocs/themes)">
+  ## Access Control
+  #  Restrict access to local network
+  Order allow,deny
+  Allow from 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+</DirectoryMatch>
+
+## Your web pages
+Alias /my-urc/ "/opt/my-urc"
+<Directory "/opt/my-urc">
+  # NOTE: these could also be set in a '.htaccess' file
+  
+  ## Access Control
+  #  Restrict access to local network
+  Order allow,deny
+  Allow from 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+  #  Disable access to configuration files
+  <Files urc.config.php>
+    Satisfy all
+    Order allow,deny
+    Deny from all
+  </Files>
+
+  ## Logging
+  #  Disable logging of RPC requests (prevent logs clogging with URC poll requests)
+  #  NOTE: User along with the following settings in your server or virtual host configuration
+  #        > CustomLog <log-file> <log-format> env=!no-logging'
+  #        > CustomLog /dev/null "no-logging" env=no-logging'
+  <IfModule mod_setenvif.c>
+    SetEnvIf Request_URI "urc\.rpc\.php$" no-logging
+  </IfModule>
+
+  ## PHP settings
+  php_flag register_globals 0
+  php_value include_path "/usr/share/php-urc/php/include"
+  php_value display_errors Off
+
+  ## PHP-URC environment
+  setenv PHP_URC_INCLUDE_PATH "/usr/share/php-urc/php/include"
+  setenv PHP_URC_HTDOCS_URL "/php-urc"
+</Directory>
+

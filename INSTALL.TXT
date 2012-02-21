@@ -1,0 +1,111 @@
+PHP Universal Remote Control (PHP-URC)
+======================================
+
+
+BUILD
+-----
+
+NOTE: By "build", we mean create the necessary tarballs/package required for
+      installation (according to the INSTALL section below) or distribution.
+
+1. [MUST] Obtain the source code:
+
+   BASH: git clone https://github.com/cedric-dufour/php-urc
+
+   OR
+
+   BASH: tar -xjf php-urc-source-@version@.tar.bz2
+   BASH: cd php-urc-source-@version@
+
+2. [MAY] (Re-)build the source tarball:
+
+   BASH: ./debian/rules build-source-tarball
+   BASH: ls -al ../php-urc-source-@version@.tar.bz2
+
+3. [MAY] Build the installation (release) tarball:
+
+   BASH: ./debian/rules build-install-tarball
+   BASH: ls -al ../php-urc-@version@.tar.bz2
+
+4. [MAY] Build the examples tarball:
+
+   BASH: ./debian/rules build-examples-tarball
+   BASH: ls -al ../php-urc-examples-@version@.tar.bz2
+
+5. [MAY] Build the documentation tarball:
+
+   BASH: ./debian/rules build-doc-tarball
+   BASH: ls -al ../php-urc-doc-@version@.tar.bz2
+
+5. [MAY] Build the debian packages:
+
+   BASH: debuild -us -uc -b
+   BASH: ls -al ../php-urc*_@version@_all.deb
+
+7. [MAY] Build the debian source package:
+
+   BASH: debuild -I'.git*' -us -uc -S
+   BASH: ls -al ../php-urc_@version@.dsc ../php-urc_@version@.tar.gz
+
+OR
+
+2-7. [SHOULD] Do it all with a single command
+
+   BASH: ./debian/rules release
+
+
+INSTALL
+-------
+
+WARNING: PHP-URC is actively maintained on Linux. It has not been tested on Windows.
+NOTE: We assume a Linux (Debian) environment and a working Apache/PHP setup.
+
+1. [MUST] Install PHP-URC:
+
+   a. using the release tarball:
+
+      BASH: INSTALL_DIR='<installation-directory>'
+      BASH: cd "${INSTALL_DIR}"
+      BASH: tar -xjf php-urc-@version@.tar.bz2
+
+   OR
+
+   b. using the debian package:
+
+      BASH: dpkg -i php-urc_@version@_all.deb
+
+3. [MAY] Install PHP-URC examples:
+
+   a. using the examples tarball:
+
+      BASH: EXAMPLES_DIR='<documentation-directory>'
+      BASH: cd "${EXAMPLES_DIR}"
+      BASH: tar -xjf php-urc-examples-@version@.tar.bz2
+
+   OR
+
+   b. using the debian package:
+
+      BASH: dpkg -i php-urc-examples_@version@_all.deb
+
+3. [MAY] Install PHP-URC documentation:
+
+   a. using the documentation tarball:
+
+      BASH: DOC_DIR='<documentation-directory>'
+      BASH: cd "${DOC_DIR}"
+      BASH: tar -xjf php-urc-doc-@version@.tar.bz2
+
+   OR
+
+   b. using the debian package:
+
+      BASH: dpkg -i php-urc-doc_@version@_all.deb
+
+
+CONFIGURATION AND USAGE
+-----------------------
+
+Please refer to the HTML documentation (in the documentation tarball or debian
+package).
+

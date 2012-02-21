@@ -1,0 +1,44 @@
+Source: php-urc
+Section: web
+Priority: optional
+Maintainer: Cedric Dufour <cedric.dufour@ced-network.net>
+Build-Depends: debhelper (>= 5) 
+Homepage: http://www.ced-network.net/php-urc
+
+Package: php-urc
+Architecture: all
+Depends: libapache2-mod-php5 | php5-cgi
+Description: PHP Universal Remote Control (PHP-URC)
+ The PHP Universal Remote Control (PHP-URC) framework is a library which allows
+ low-skilled PHP developers to easily design web-based remote control interfaces.
+ .
+ As such, it comes as an ideal development resource for those setting-up a Home
+ Theater PC (HTPC) or a Home Control PC (HCPC), and willing to control both their
+ PC and external appliances - amplifier, beamer, coffee machine, etc. - from a
+ single interface, accessible with any web-able device.
+ .
+ From the front-end (user) interface point of view, PHP-URC is entirely Ajax-
+ based and provides a "look-and-feel" close to a genuine remote control.
+ .
+ From the back-end (services/appliances) interface point of view, PHP-URC relies
+ on "control" plug-ins, which can easily be extended to drive any imagineable
+ backend.
+ .
+ The current packaging includes plug-ins for the following backends:
+  - LIRC (Linux Infra-Red Control) - http://lirc.org
+  - HEYU (X-10 Automation) - http://heyu.org
+  - MPD (Music Player Daemon) - http://www.musicpd.org
+  - MPLAYER (Multimedia Player) - http://www.mplayerhq.hu
+  - VLC (VideoLAN Media Player) - http://www.videolan.org
+  - SHELL (Command Line) - allowing to send arbitrary system commands
+  - MACRO (Macro Commands) - allowing to gather several control/command as one
+
+Package: php-urc-examples
+Architecture: all
+Depends: php-urc
+Description: PHP Universal Remote Control (PHP-URC) - Examples
+
+Package: php-urc-doc
+Architecture: all
+Recommends: php-urc, php-urc-examples
+Description: PHP Universal Remote Control (PHP-URC) - Documentation
