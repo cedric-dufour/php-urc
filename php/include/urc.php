@@ -691,7 +691,7 @@ class URC
       if( is_null( self::$oTHEME ) )
       {
         $sThemeClass = URC::loadTheme();
-        $roTHEME =& new $sThemeClass();
+        $roTHEME = new $sThemeClass();
         if( !($roTHEME instanceof URC_THEME) )
           throw new URC_EXCEPTION( __METHOD__, 'Mismatched URC theme class; Theme: '.$this->sTheme );
         self::$oTHEME =& $roTHEME;
@@ -731,7 +731,7 @@ class URC
       if( is_null( self::$oTHEME ) )
       {
         $sThemeClass = URC::loadTheme();
-        $roTHEME =& new $sThemeClass();
+        $roTHEME = new $sThemeClass();
         if( !($roTHEME instanceof URC_THEME) )
           throw new URC_EXCEPTION( __METHOD__, 'Mismatched URC theme class; Theme: '.$this->sTheme );
         self::$oTHEME =& $roTHEME;
