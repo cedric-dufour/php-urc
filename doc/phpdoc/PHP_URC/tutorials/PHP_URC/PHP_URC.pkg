@@ -8,7 +8,7 @@
 <refsynopsisdiv>
 <author>
 Cedric Dufour
-<authorblurb>{@link http://www.ced-network.net/php-urc http://www.ced-network.net/php-urc}</authorblurb>
+<authorblurb>{@link http://cedric.dufour.name/software/php-urc http://cedric.dufour.name/software/php-urc}</authorblurb>
 </author>
 </refsynopsisdiv>
 
@@ -86,7 +86,7 @@ $ git clone https://github.com/cedric-dufour/php-urc
 <screen>
 <![CDATA[
 $ tar -xjf php-urc-source-@version@.tar.bz2
-$ cd php-ape-@version@
+$ cd php-urc-@version@
 ]]>
 </screen>
 </refsect2>
@@ -165,7 +165,7 @@ $ ./debian/rules release
 
 <refsect1 id="{@id install}">
 <title>Installation</title>
-<para><emphasis>WARNING: PHP-APE is actively maintained on Linux. It has not been tested on Windows.</emphasis></para>
+<para><emphasis>WARNING: PHP-URC is actively maintained on Linux. It has not been tested on Windows.</emphasis></para>
 <para><emphasis>NOTE:</emphasis> We assume a Linux (Debian) environment and a working Apache/PHP setup.</para>
 
 <refsect2 id="{@id install_php}">

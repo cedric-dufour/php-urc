@@ -19,7 +19,7 @@
  * </PRE>
  *
  * @package PHP_URC_Themes
- * @author Cedric Dufour <http://www.ced-network.net/php-urc>
+ * @author Cedric Dufour <http://cedric.dufour.name>
  * @version @version@
  */
 
