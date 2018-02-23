@@ -2,12 +2,13 @@ Source: php-urc
 Section: web
 Priority: optional
 Maintainer: Cedric Dufour <cedric.dufour@ced-network.net>
-Build-Depends: debhelper (>= 5) 
+Build-Depends: debhelper (>= 5), php-cli | php5-cli
+Build-Depends-Indep: php-pear
 Homepage: http://cedric.dufour.name/software/php-urc
 
 Package: php-urc
 Architecture: all
-Depends: libapache2-mod-php5 | php5-cgi
+Depends: libapache2-mod-php | libapache2-mod-php5 | php-cgi | php5-cgi | php-fpm | php5-fpm
 Description: PHP Universal Remote Control (PHP-URC)
  The PHP Universal Remote Control (PHP-URC) framework is a library which allows
  low-skilled PHP developers to easily design web-based remote control interfaces.
