@@ -430,6 +430,7 @@ URC_INTERFACE_PLAYER, URC_INTERFACE_PLAYLIST, URC_INTERFACE_PLAYITEM
       // Retrieve meta-data
       $asResponse = $this->getResponseForCommand( 'currentsong' );
       if( is_null( $asResponse ) ) return;
+      $sTitle = $sName = null;
       foreach( $asResponse as $sResponse )
       {
         list( $sTag, $sValue ) = array_map( 'trim', explode( ':', $sResponse, 2 ) );
@@ -448,8 +449,11 @@ URC_INTERFACE_PLAYER, URC_INTERFACE_PLAYLIST, URC_INTERFACE_PLAYITEM
           break;
 
         case 'title':
+          $sTitle = $sValue;
+          break;
+
         case 'name':
-          $this->asPlayitemMetadata['title'] = $sValue;
+          $sName = $sValue;
           break;
 
         case 'date':
@@ -476,6 +480,15 @@ URC_INTERFACE_PLAYER, URC_INTERFACE_PLAYLIST, URC_INTERFACE_PLAYITEM
           $this->asPlayitemMetadata['rating'] = $sValue;
           break;
         }
+      }
+      if( isset( $sName, $sTitle ) ) {
+        $this->asPlayitemMetadata['title'] = $sName.': '.$sTitle;
+      }
+      elseif( isset( $sTitle ) ) {
+        $this->asPlayitemMetadata['title'] = $sTitle;
+      }
+      elseif( isset( $sName ) ) {
+        $this->asPlayitemMetadata['title'] = $sName;
       }
     }
   }
