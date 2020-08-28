@@ -769,7 +769,7 @@ class URC
     static $bMobileClient;
     if( is_null( $bMobileClient ) )
     {
-      $asMobileSignatures = array( 'nokia', 'sonyericsson', 'motorola', 'samsung', 'lg-', 'lge-', 'sie-', 'up.b', 'blackberry', 'iphone', 'mot-', 'windows ce', 'ppc', 'palmsource', 'palm' );
+      $asMobileSignatures = array( 'android', 'nokia', 'sonyericsson', 'motorola', 'samsung', 'lg-', 'lge-', 'sie-', 'up.b', 'blackberry', 'iphone', 'mot-', 'windows ce', 'ppc', 'palmsource', 'palm' );
       $bMobileClient = preg_match( '/'.implode('|',array_map('preg_quote',$asMobileSignatures)).'/i', $_SERVER['HTTP_USER_AGENT'] );
     }
     return $bMobileClient;
